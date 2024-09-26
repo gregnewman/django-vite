@@ -317,7 +317,6 @@ class DjangoViteAppClient:
 
         # Add the script by itself
         url = self._get_production_server_url(manifest_entry.file)
-        # Add the script by itself
         if manifest_entry.file.endswith(".css"):
             tags.append(
                 TagGenerator.stylesheet(url)
