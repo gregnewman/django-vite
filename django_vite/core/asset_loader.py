@@ -317,12 +317,18 @@ class DjangoViteAppClient:
 
         # Add the script by itself
         url = self._get_production_server_url(manifest_entry.file)
-        tags.append(
-            TagGenerator.script(
-                url,
-                attrs=scripts_attrs,
+        # Add the script by itself
+        if manifest_entry.file.endswith(".css"):
+            tags.append(
+                TagGenerator.stylesheet(url)
             )
-        )
+        else:
+            tags.append(
+                TagGenerator.script(
+                    url,
+                    attrs=scripts_attrs,
+                )
+            )
 
         # Preload imports
         preload_attrs = {
